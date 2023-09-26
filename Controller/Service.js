@@ -1,5 +1,8 @@
 var mongoose = require('mongoose')
 var Service = require('../Models/serviceSchema')
+let responceCode = require('../ResponseCode/responce')
+const { DBerror } = require('../service/errorHandeler')
+
 
 const addService = (req, res) => {
 
@@ -12,18 +15,19 @@ const addService = (req, res) => {
     return insertService
         .save()
         .then((data) => {
-            return res.status(200).json({
+            return res.status(responceCode.errorCode.success).json({
                 status: true,
                 message: 'Service inserted successfully',
                 data: data
             })
         })
         .catch((error) => {
-            return res.status(500).json({
+            const errors = DBerror(error)
+            return res.status(responceCode.errorCode.serverError).json({
                 status: false,
-                message: 'Server error, Please try again later',
-                error: error
-            })
+                message: errors,
+                error: error,
+            });
         })
 }
 

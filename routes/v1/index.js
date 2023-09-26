@@ -28,6 +28,7 @@ const userController = require('../../Controller/Auth/User')
 const serviceController = require('../../Controller/Service')
 const beauticianController = require('../../Controller/Beautician')
 const saloonController = require('../../Controller/Saloon')
+const ratingController = require('../../Controller/User/Rating')
 
 const middleware = require('../../service/middleware').middleware;
 
@@ -50,7 +51,7 @@ const AdminRoute = require('./admin')
 
 router.use(middleware); // ========> auth setup 
 
-
+router.post('/user/add-rating', ratingController.addRating)
 
 
 

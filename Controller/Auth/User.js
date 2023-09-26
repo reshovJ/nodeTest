@@ -26,6 +26,7 @@ const userRegister = async (req, res) => {
     let userData = {
         ...req.body,
         password: passwordHash.generate(req.body.password),
+        email: req.body.email.toLowerCase(),
         token: createToken(req.body),
         createdOn: new Date(),
     };

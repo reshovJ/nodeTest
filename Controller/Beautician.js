@@ -1,5 +1,7 @@
 var mongoose = require('mongoose')
 var Beautician = require('../Models/beauticianSchema')
+let responceCode = require('../ResponseCode/responce')
+const { DBerror } = require('../service/errorHandeler');
 
 const addBeautician = (req, res) => {
 
@@ -12,18 +14,19 @@ const addBeautician = (req, res) => {
     return insertBeauticaian
         .save()
         .then((data) => {
-            return res.status(200).json({
+            return res.status(responceCode.errorCode.success).json({
                 status: true,
                 message: 'Beauticain added successfully',
                 data: data
             })
         })
         .catch((error) => {
-            return res.status(500).json({
+            const errors = DBerror(error)
+            return res.status(responceCode.errorCode.serverError).json({
                 status: false,
-                message: 'Server error, Please try again later',
-                error: error
-            })
+                message: errors,
+                error: error,
+            });
         })
 }
 

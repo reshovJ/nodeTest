@@ -31,9 +31,9 @@ user.middleware = async (req, res, next) => {
             if (userType == "Admin") {
                 userData = await AdminController.getTokenData(authorization);
             }
-            // else if (userType == "User") {
-            //     userData = await UserController.getTokenData(authorization);
-            // }
+            else if (userType == "User") {
+                userData = await UserController.getTokenData(authorization);
+            }
 
 
             if (userData && userData != null) {
