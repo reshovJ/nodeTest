@@ -1,6 +1,6 @@
 var user = {};
 
-var AdminController = require('../Controller/Auth/Admin');
+
 var UserController = require('../Controller/Auth/User')
 const responceCode = require('../ResponseCode/responce');
 
@@ -28,10 +28,7 @@ user.middleware = async (req, res, next) => {
             let userData = null;
             let userType = typeof (req.headers.usertype) != "undefined" ? req.headers.usertype : "User";
             // console.log('userType', userType, req.headers);
-            if (userType == "Admin") {
-                userData = await AdminController.getTokenData(authorization);
-            }
-            else if (userType == "User") {
+            if (userType == "User") {
                 userData = await UserController.getTokenData(authorization);
             }
 

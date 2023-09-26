@@ -59,6 +59,7 @@ router.post('/user/serch-by-rating', userViewController.getSaloonByRating)
 router.get('/user/all-services', userViewServiceController.getService)
 router.post('/user/filter-service-by-price', userViewServiceController.getServiceFilterByPrice)
 router.get('/user/service-by-beautician', userViewServiceController.serviceByBeautician)
+router.post('/user/service-sort-by-price', userViewServiceController.sortServiceByPrice)
 
 
 
