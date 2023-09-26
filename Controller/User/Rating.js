@@ -61,12 +61,14 @@ const addRating = (req, res) => {
         return res.status(responceCode.errorCode.serverError).json({
             status: false,
             message: "Server error, Please try again later",
-            error: error,
+            error: errors,
         });
     })
 
    
 }
+
+
 
 module.exports = {
     addRating

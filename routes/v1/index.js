@@ -24,6 +24,8 @@ router.get('/', function (req, res, next) {
 });
 
 const userController = require('../../Controller/Auth/User')
+const userViewController = require('../../Controller/User/Saloon')
+const userViewServiceController = require('../../Controller/User/Service')
 
 const serviceController = require('../../Controller/Service')
 const beauticianController = require('../../Controller/Beautician')
@@ -52,7 +54,9 @@ const AdminRoute = require('./admin')
 router.use(middleware); // ========> auth setup 
 
 router.post('/user/add-rating', ratingController.addRating)
-
+router.get('/user/view-saloon', userViewController.getSaloon)
+router.post('/user/serch-by-rating', userViewController.getSaloonByRating)
+router.get('/user/all-services', userViewServiceController.getService)
 
 
 
